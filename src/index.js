@@ -1,13 +1,22 @@
-const Component = require('./Component');
-require('./style.css');
-require('./logo.png')
+// React;
+// ReactDOM;
+const Heading = require('./Heading');
 
-const isReady = true;
+const container = document.getElementById('root');
 
-const root = document.getElementById('root');
+const element = React.createElement( Heading ,
+  { givenId: 'first', givenTitle: '12354', headingLevel: 3 },
+  'text ' , React.createElement('span', {}, 'yes'), ' test'
+);
 
-root.append('Вставили через ЖС jgznm');
+// создаем компонент и ложим в ящик props все настройки и детей этого элемента
+const element2 = React.createElement( Heading ,
+  { givenId: 'second', givenTitle: 'текст'},
+  'любой'
+);
 
-const comp1 = new Component();
+// console.log(element);
 
-console.log(1);
+ReactDOM.render(element, container);
+
+// ReactDOM.render(element2, container);
