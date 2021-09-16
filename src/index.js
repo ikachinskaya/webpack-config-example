@@ -1,22 +1,34 @@
-// React;
-// ReactDOM;
-const Heading = require('./Heading');
+const root = document.getElementById('root');
 
-const container = document.getElementById('root');
+class TextBlock extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-const element = React.createElement( Heading ,
-  { givenId: 'first', givenTitle: '12354', headingLevel: 3 },
-  'text ' , React.createElement('span', {}, 'yes'), ' test'
-);
+  render() {
+    const {
+      articleTitle,
+      firstPar = 'забыл передать текст',
+      secondPar = 'забыл передать текст',
+      headingLevel = 1
+    } = this.props;
+    return React.createElement(
+      'article',
+      {},
+      React.createElement(`h${headingLevel}`, { }, articleTitle),
+      React.createElement('p', {}, firstPar),
+      React.createElement('p', {}, secondPar)
+    );
+  }
+}
 
-// создаем компонент и ложим в ящик props все настройки и детей этого элемента
-const element2 = React.createElement( Heading ,
-  { givenId: 'second', givenTitle: 'текст'},
-  'любой'
-);
+const reactElem = React.createElement(TextBlock, {
+  articleTitle: 'ЗАголовок',
+  firstPar: 'lorem ipsum',
+  headingLevel: 4
+});
 
-// console.log(element);
+const reactElem1 = React.createElement(TextBlock);
+const reactElem2 = React.createElement(TextBlock);
 
-ReactDOM.render(element, container);
-
-// ReactDOM.render(element2, container);
+ReactDOM.render(reactElem, root);
