@@ -1,34 +1,9 @@
-const root = document.getElementById('root');
+const Img = require("./Img");
+const root = document.getElementById("root");
 
-class TextBlock extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const {
-      articleTitle,
-      firstPar = 'забыл передать текст',
-      secondPar = 'забыл передать текст',
-      headingLevel = 1
-    } = this.props;
-    return React.createElement(
-      'article',
-      {},
-      React.createElement(`h${headingLevel}`, { }, articleTitle),
-      React.createElement('p', {}, firstPar),
-      React.createElement('p', {}, secondPar)
-    );
-  }
-}
-
-const reactElem = React.createElement(TextBlock, {
-  articleTitle: 'ЗАголовок',
-  firstPar: 'lorem ipsum',
-  headingLevel: 4
+const element = React.createElement(Img, {
+  alt: "Image",
+  src: "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
 });
 
-const reactElem1 = React.createElement(TextBlock);
-const reactElem2 = React.createElement(TextBlock);
-
-ReactDOM.render(reactElem, root);
+ReactDOM.render(element, root);
